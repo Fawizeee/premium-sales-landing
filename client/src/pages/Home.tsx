@@ -23,8 +23,11 @@ export default function Home() {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    // Handle form submission
-    console.log("Form submitted:", formData);
+    const subject = encodeURIComponent(`New Inquiry from ${formData.name}`);
+    const body = encodeURIComponent(
+      `Name: ${formData.name}\nEmail: ${formData.email}\n\nMessage:\n${formData.message}`
+    );
+    window.location.href = `mailto:bellofawaz%@gmail.com?subject=${subject}&body=${body}`;
     setFormData({ name: "", email: "", message: "" });
   };
 
@@ -218,7 +221,7 @@ export default function Home() {
 
                   <Button
                     className="w-full bg-accent text-accent-foreground hover:bg-accent/90"
-                    onClick={() => document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" })}
+                    onClick={() => window.open("https://selar.com/7kchatgpt", "_blank")}
                   >
                     Order Now
                   </Button>
